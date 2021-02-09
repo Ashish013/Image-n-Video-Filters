@@ -1,5 +1,0 @@
-streamlit-webrtc
-streamlit-webcam-example
-opencv-contrib-python
-cmake
-scikit-image
