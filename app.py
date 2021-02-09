@@ -119,7 +119,7 @@ if liked == True:
         with open("./helper/likes.txt",'w+') as file:
             like_count+=1
             file.write(str(like_count))
-st.markdown("""<style>.css-2trqyj{background-color: rgba(0,0,255,0.6);color: white} </style>""", unsafe_allow_html=True)
+#st.markdown("""<style>.css-2trqyj{background-color: rgba(0,0,255,0.6);color: white} </style>""", unsafe_allow_html=True)
 
 if like_count != 0:
     col2.markdown(f"{int(like_count)} :heart:")
