@@ -6,9 +6,9 @@ def filter_info(filter):
 		st.sidebar.subheader("Filter Information: ")
 	if filter == "Basic Image Editing":
 		st.sidebar.write('''
-			* Gamma Correction can be used to approximate brigtness in an image.")
-			* Saturation can be used to control saturation in an image.
-			* Bluring enables bluring of images using a Gaussian filter.
+			* Gamma Correction is used to approximate brightness in an image.
+			* Saturation is used to control saturation in an image.
+			* Bluring enables bluring of the images using a Gaussian filter.
 			''')
 	elif filter == "Thug Life":
 		st.sidebar.write('''
