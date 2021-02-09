@@ -39,9 +39,8 @@ def filter_info(filter):
 			''')
 	elif filter == "Heart Eyes":
 		st.sidebar.write('''
-			* Heart Eyes are automatically applied on to the face.
-			* The filter is applied by identifying 68 facial landmarks, computing the orientation of\
-			 face and finally warpping the overlay on to the face.
+			* Heart Eyes are automatically applied on to the face by identifying 68 facial landmarks,\
+			computing the orientation of face and finally warpping the overlay on to the face.
 			''')
 	elif filter == "John Cena XD":
 		st.sidebar.write(" ")
