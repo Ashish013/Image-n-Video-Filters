@@ -4,4 +4,5 @@ streamlit-webrtc
 streamlit-webcam-example
 opencv-contrib-python
 cmake
+https://files.pythonhosted.org/packages/9b/f4/8d13ff6d9c8520f96760780375af135ae0832325607690d84a367706f1e7/dlib-19.8.0.tar.gz#sha256=f541e1c33f1f74c2b84f348f4e18fb890540cb3ca3916fc9a4f7034e77ed2376
 scikit-image
