@@ -55,7 +55,7 @@ def video_filters(transform_type):
     file_checker_return = file_checker(transform_type)
     class OpenCVVideoTransformer(VideoTransformerBase):
         type: Literal["Live Stream", "Cartoonie", "Half Slide - Horizontal","Half Slide - Vertical","Line Freeze - Horizontal",\
-        "Line Freeze - Vertical","Thug Life","Time Freeze - Ssim","Time Freeze - Rcnn","Heart Eyes","Moustaches","Face Blur"]
+        "Line Freeze - Vertical","Thug Life","Time Freeze - Ssim","Time Freeze - Rcnn","Heart Eyes","Moustaches","Face Blur","Devil-ie"]
 
         def __init__(self) -> None:
             # Triggers that are used to control the program flow
