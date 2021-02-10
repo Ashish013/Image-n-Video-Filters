@@ -32,20 +32,34 @@ def image_transformations(result,filter,img_extension = "jpg"):
 
 		filter_info(filter)
 		if filter == "Basic Image Editing":
-			st.sidebar.empty()
-			gamma = st.slider("Gamma Correction",0.1,5.0,1.0,step = 0.1)
+			gamma = st.slider("Gamma Correction",0.0,5.0,1.0,step = 0.1)
 			saturation = st.slider("Saturation",0.0,2.0,1.0,step = 0.1)
 
 			bluring = st.checkbox("Bluring",False)
 			if bluring:
 				col1,col2 = st.beta_columns(2)
-				blur_area = col1.select_slider("Blur Area",1,101,1,2)
+				blur_area = col1.slider("Blur Area",1,101,1,2)
 				blur_intensity = col2.slider("Blur Intensity",0,50,0,1)
 				result = cv2.GaussianBlur(result,(blur_area,blur_area),blur_intensity)
 
+			apply_vintage = st.checkbox("Apply Vignette effect",False)
+			if apply_vintage:
+					vignette_effect = st.slider("Vignette Intensity",1,120,1)
+					rows, cols = result.shape[:2]
+					# Create a Gaussian filter
+					kernel_x = cv2.getGaussianKernel(cols,vignette_effect+139)
+					kernel_y = cv2.getGaussianKernel(rows,vignette_effect+139)
+					kernel = kernel_y * kernel_x.T
+					filter = 255 * kernel / np.linalg.norm(kernel)
+					vignette_img = np.copy(result)
+					# for each channel in the input image, we will apply the above filter
+					for i in range(3):
+						vignette_img[:,:,i] = vignette_img[:,:,i] * filter
+					result = vignette_img
+
 			hsvImg = cv2.cvtColor(result,cv2.COLOR_BGR2HSV)
 			hsvImg[...,1] = np.clip(hsvImg[...,1]*saturation,0,255)
-			hsvImg[...,2] = np.power((hsvImg[...,2]/255.0),1/gamma) * 255.0
+			hsvImg[...,2] = np.power((hsvImg[...,2]/255.0),1/(gamma+0.1)) * 255.0
 			result = cv2.cvtColor(hsvImg,cv2.COLOR_HSV2BGR)
 
 		elif filter == "Thug Life":
@@ -66,7 +80,7 @@ def image_transformations(result,filter,img_extension = "jpg"):
 			else:
 				pil_img = Image.fromarray(cv2.cvtColor(result,cv2.COLOR_BGR2RGB) )
 				draw = ImageDraw.Draw(pil_img)
-				y_offset = int(0.2 * h)
+				y_offset = int(0.17 * h)
 				draw.text((w//2,h - y_offset),txt,font = font)
 				result = cv2.cvtColor(np.asarray(pil_img,dtype = np.uint8),cv2.COLOR_RGB2BGR)
 
@@ -94,7 +108,7 @@ def image_transformations(result,filter,img_extension = "jpg"):
 			result = cv2.cvtColor(np.asarray(pil_img,dtype = np.uint8),cv2.COLOR_RGB2BGR)
 
 		elif filter == "Cartoonie":
-			lineSize = st.slider("Edge Controller",3,101,7,2)
+			lineSize = st.slider("Number of edges",3,101,7,2)
 			blurValue = st.slider("Blur effect",3,101,7,2)
 			totalColors = st.slider("Total number of colors in image",2,100,12,1)
 			result = cartoonify(result,[lineSize,blurValue,totalColors])
@@ -121,6 +135,7 @@ def image_transformations(result,filter,img_extension = "jpg"):
 				st.write(msg)
 
 		elif filter == "Green Screen":
+			st.write("")
 			st.write("**Upload Background Image:**")
 			bg_upload = st.file_uploader("",type = img_extensions)
 			if bg_upload is not None:
@@ -128,7 +143,10 @@ def image_transformations(result,filter,img_extension = "jpg"):
 				bg = cv2.imdecode(np.frombuffer(img_bytes, np.uint8), -1)
 				confThresh = st.slider("Confidence Threshold",0.0,1.0,0.8,0.01)
 				maskThresh = st.slider("Mask Threshold",0.0,1.0,0.35,0.01)
+				tempt_text = st.empty()
+				tempt_text.write("Processing....")
 				mask = generate_rcnn_mask(result,confThresh,maskThresh)
+				tempt_text.write("")
 				if np.all(mask == np.zeros_like(mask)):
 					st.write("Person not detected to overlay as foregreound !")
 				fg = cv2.bitwise_and(result,result,mask = mask)
