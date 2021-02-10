@@ -14,13 +14,52 @@ def show_info():
     st.subheader('''
     This app is developed and maintained by Ashish Marisetty :heart:
     Entire deployement and configuration of the app is managed through [Streamlit](http://streamlit.io/).
-    In case of any discrepancies, feel free to [raise an issue here](https://github.com/Ashish013/Social-Media-Filters-Deploy/issues)
+    In case of any discrepancies, feel free to [raise an issue here](https://github.com/Ashish013/Social-Media-Filters-Deploy/issues).
+
+
+    *For more interesting projects and explanation of the source codes, consider following [my blogs here.](https://ashish013.github.io/)*
     ''')
-    st.subheader (" **Select a configuration mode in the sidebar to start applying the filters !**")
+    st.subheader (" **Select a configuration mode in the sidebar to start applying the filters :point_left:**")
     st.write('''
         The application contains 15+ filters implemented from scratch in python using Deep Learning and Computer Vision libraries.
-        Here are a few images/videos made with the app:
+        Here are a few images/videos made with the website:
+
+        **Note that all edited images below are directly generated without any manual intervention.**
         ''')
+    st.markdown("#### **Filters used: Cartoonie, Moustache -2, Thug Life**")
+    st.write("")
+    col1,col2 = st.beta_columns(2)
+    col1.image("./helper/dwayne.jpg",use_column_width = True,clamp = True)
+    col2.image("./helper/dwayne_edit.jpg",use_column_width = True,clamp = True)
+
+    st.markdown("#### **Filters used: Line Freeze - Vertical**")
+    st.write("")
+    st.image("./helper/Line Freeze.gif")
+
+    st.markdown("#### **Filters used: Devil-ie, Heart Eyes**")
+    st.write("")
+    col1,col2 = st.beta_columns(2)
+    col1.image("./helper/trump.jpg",use_column_width = True,clamp = True)
+    col2.image("./helper/trump_edit.jpg",use_column_width = True,clamp = True)
+
+    st.markdown("#### **Filters used: Half Slide - Vertical**")
+    st.write("")
+    st.image("./helper/Line Slide.gif")
+
+    st.markdown("#### **Filters used: Green Screen**")
+    st.write("")
+    col1,col2 = st.beta_columns(2)
+    col1.image("./helper/elon_kanye.jpg",use_column_width = True,clamp = True)
+    col2.image("./helper/elon_kanye_edit.jpeg",use_column_width = True,clamp = True)
+
+    st.markdown("#### **This video can be recreated using Time Freeze - Ssim filter **")
+    st.write("")
+    st.image("./helper/Time Freeze.gif")
+
+    st.write("")
+
+    st.subheader (" **Select a configuration mode in the sidebar to start applying the filters :point_left:**")
+    st.write("All the above input images are for education purposes only.")
 
 st.sidebar.subheader("Choose the mode of operation: ")
 selected_option = st.sidebar.selectbox("",["Select from below","Image Filters","Video Filters"])
@@ -67,7 +106,10 @@ if selected_option == "Image Filters":
 
 elif selected_option == "Video Filters":
     title.header("Video Filters")
-
+    st.markdown("""<style>.css-3mnucz a {color: red} </style>""", unsafe_allow_html=True)
+    st.markdown("<span style='color:red'>In case video filters don't work in online mode, follow the instructions in <a href \
+        = 'https://github.com/Ashish013/Image-n-Video-Filters/blob/main/README.md#how-to-run-the-application-from-a-local-host'>Readme</a>\
+         to run them on localhost.</span>",unsafe_allow_html=True)
     transform_type = st.selectbox("Select a Video Filter: ", ["Live Stream","Half Slide - Horizontal","Half Slide - Vertical"\
         ,"Line Freeze - Horizontal","Line Freeze - Vertical","Time Freeze - Ssim","Time Freeze - Rcnn","Heart Eyes","Moustaches",\
         "Face Blur","Devil-ie","Thug Life"],0)
@@ -76,7 +118,7 @@ elif selected_option == "Video Filters":
         st.sidebar.write("This section contains filters to be applied on live video from web camera")
         st.sidebar.subheader("Tips for operating on Video Filters: ")
         st.sidebar.markdown('''
-        * In case the video doesn't start streaming or misfunctions, stop the stream and start again using the buttom below the video player.
+        * In case the video  misfunctions/ glitches, stop the stream and start again using the buttom below the video player.
         * For capturing a filter result, pause the stream from the media player and take a screenshot :sweat_smile:.
             ''')
     elif transform_type == "Time Freeze - Ssim":
@@ -97,6 +139,7 @@ else:
 
 #-------------------------------------------------------------------------------------------------------
 # Like button
+
 st.sidebar.subheader("Love the project, then lmk below :")
 st.sidebar.write("")
 col1,col2 = st.sidebar.beta_columns([1.7,1])
