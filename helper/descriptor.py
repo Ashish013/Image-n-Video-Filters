@@ -6,9 +6,10 @@ def filter_info(filter):
 		st.sidebar.subheader("Filter Information: ")
 	if filter == "Basic Image Editing":
 		st.sidebar.write('''
-			* Gamma Correction is used to approximate brightness in an image.
-			* Saturation is used to control saturation in an image.
-			* Bluring enables bluring of the images using a Gaussian filter.
+			* Gamma Correction can be used to approximate brigtness in an image.
+			* Saturation can be used to control saturation in an image.
+			* Bluring enables bluring of images using a Gaussian filter.
+			* Vignette effect enables a black tint to the image around the edges.
 			''')
 	elif filter == "Thug Life":
 		st.sidebar.write('''
@@ -20,9 +21,10 @@ def filter_info(filter):
 		st.sidebar.write('''
 			* First upload the image to be used as foreground image.
 			* Next upload the image to be used as background image.
-			* The filter identifies the person in foreground image using Deep Learning model (Mask-RCNN)\
+			* The filter identifies the person in foreground image using Mask-RCNN (a Deep Learning Model)\
 			 and passes this mask to be applied as foreground on to the background image.
-			* This produces a Green screen effect without an actual one.
+			* Confidence threshold controls the threshold for person identification.
+			* Mask threshold controls the extent of mask to be counted as foreground.
 			''')
 	elif filter == "Moustaches":
 		st.sidebar.write('''
@@ -48,9 +50,9 @@ def filter_info(filter):
 
 	elif filter == "Cartoonie":
 		st.sidebar.write('''
-			* Cartoonie tranforms the image into a cartoon-ie and sketch-y kinda look.
-			* Cartoon Effect slider allows you to control the effect applied on the image.
-			* Higher the Edge Controller value, more prominent the edges in the image.
+			* Cartoonie tranforms the image into a cartoon-ie kinda look.
+			* Higher the number of edges value, more prominent the edges in the image.
+			* Total number of colors influence the bins in Image quantization.
 			''')
 	elif filter == "Face Blur":
 		st.sidebar.write('''
