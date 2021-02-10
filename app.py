@@ -17,7 +17,7 @@ def show_info():
     In case of any discrepancies, feel free to [raise an issue here](https://github.com/Ashish013/Social-Media-Filters-Deploy/issues).
 
 
-    *For more interesting projects and explanation of the source codes, consider following [my blogs here.](https://ashish013.github.io/)*
+    *For more interesting projects and explanation of the source codes, consider following [my blogs here.](https://ashish013.github.io/opencv)*
     ''')
     st.subheader (" **Select a configuration mode in the sidebar to start applying the filters :point_left:**")
     st.write('''
