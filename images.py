@@ -161,3 +161,4 @@ def image_transformations(result,filter,img_extension = "jpg"):
 			filename = "Output" + "." + img_extension
 			cv2.imwrite(filename, result)
 			st.markdown(get_binary_file_downloader_html(filename, 'the edited picture,by right clicking and select "Save the link as":P'), unsafe_allow_html=True)
+			st.markdown("Above link :point_up: is only applicable to PC's")
