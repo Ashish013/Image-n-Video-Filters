@@ -21,7 +21,7 @@ def show_info():
     ''')
     st.subheader (" **Select a configuration mode in the sidebar to start applying the filters :point_left:**")
     st.write('''
-        The application contains 15+ filters implemented from scratch in python using Deep Learning and Computer Vision libraries.
+        The website contains 15+ filters implemented from scratch in python using Deep Learning and Computer Vision libraries.
         Here are a few images/videos made with the website:
 
         **Note that all edited images below are directly generated without any manual intervention.**
