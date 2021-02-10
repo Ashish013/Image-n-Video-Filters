@@ -85,7 +85,7 @@ def image_transformations(result,filter,img_extension = "jpg"):
 				result = cv2.cvtColor(np.asarray(pil_img,dtype = np.uint8),cv2.COLOR_RGB2BGR)
 
 		elif filter == "John Cena XD":
-			mask = generate_rcnn_mask(result,0.8,0.35)
+			mask = generate_rcnn_mask(result,0.3,0.3)
 			if np.all(mask != np.zeros_like(mask)):
 				txt = "JUST ME AND JOHN CENA CHILLING..."
 			else:
