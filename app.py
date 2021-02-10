@@ -6,7 +6,7 @@ from videos import video_filters
 from images import image_transformations
 
 title = st.empty()
-title.header("Social Media Filters")
+title.header("Image and Video Filters")
 img_extensions = ["jpg","png","jpeg"]
 #vid_extensions = ["mp4","avi","mkv"]
 
