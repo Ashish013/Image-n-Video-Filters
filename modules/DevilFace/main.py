@@ -102,7 +102,8 @@ def horns_nd_fangs_overlay(input_img,landmark_files):
 
     H = cv2.findHomography(pts_src,pts_dst,cv2.RANSAC)[0]
     fangs_warpped = cv2.warpPerspective(fangs,H,(input_img.shape[1],input_img.shape[0]))
-
-    input_img = cv2.bitwise_or(fangs_warpped,input_img)
+    fangs_mask = cv2.threshold(fangs_warpped,1,255,cv2.THRESH_BINARY_INV)[1]
+    masked_input_img = cv2.bitwise_and(input_img,fangs_mask)
+    input_img = cv2.bitwise_or(fangs_warpped,masked_input_img)
 
   return input_img,msg
