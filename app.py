@@ -69,7 +69,7 @@ if selected_option == "Image Filters":
     img_operation_mode = st.selectbox("Upload Images from: ",["--  Select from below  --","Local Storage","Take a snap from Webcam"])
 
     if img_operation_mode == "Local Storage":
-        uploaded_file = st.file_uploader("Upload images and videos",type = img_extensions)
+        uploaded_file = st.file_uploader("Upload images from local storage here :point_down:",type = img_extensions)
         if uploaded_file is not None:
             img_bytes = uploaded_file.read()
             decoded_img = cv2.imdecode(np.frombuffer(img_bytes, np.uint8), -1)
