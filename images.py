@@ -39,7 +39,7 @@ def image_transformations(result,filter,img_extension = "jpg"):
 			bluring = st.checkbox("Bluring",False)
 			if bluring:
 				col1,col2 = st.beta_columns(2)
-				blur_area = col1.select_slider("Blur Area",list(range(1,101,2)),1)
+				blur_area = col1.select_slider("Blur Area",1,101,1,2)
 				blur_intensity = col2.slider("Blur Intensity",0,50,0,1)
 				result = cv2.GaussianBlur(result,(blur_area,blur_area),blur_intensity)
 
@@ -94,11 +94,10 @@ def image_transformations(result,filter,img_extension = "jpg"):
 			result = cv2.cvtColor(np.asarray(pil_img,dtype = np.uint8),cv2.COLOR_RGB2BGR)
 
 		elif filter == "Cartoonie":
-			d = st.slider("Catoon Effect",2,80,50,1)
-			sigmaValue = st.slider("Cartoon Effect Spread",100,500,350,1)
-			blockSize = st.slider("Edge Controller",3,101,65,2)
-			c = st.slider("Enhancer",-10,991,4,1)
-			result = cartoonify(result,[d,sigmaValue,blockSize,c])
+			lineSize = st.slider("Edge Controller",3,101,7,2)
+			blurValue = st.slider("Blur effect",3,101,7,2)
+			totalColors = st.slider("Total number of colors in image",2,100,12,1)
+			result = cartoonify(result,[lineSize,blurValue,totalColors])
 
 		elif filter == "Heart Eyes":
 			result,msg = overlay_heart_eyes(result,file_checker_return[1])
@@ -127,13 +126,11 @@ def image_transformations(result,filter,img_extension = "jpg"):
 			if bg_upload is not None:
 				img_bytes = bg_upload.read()
 				bg = cv2.imdecode(np.frombuffer(img_bytes, np.uint8), -1)
-				slide_obj = st.empty()
-				confThresh = slide_obj.slider("Confidence Threshold",0.0,1.0,0.8,0.01)
-				maskThresh = slide_obj.slider("Mask Threshold",0.0,1.0,0.35,0.01)
+				confThresh = st.slider("Confidence Threshold",0.0,1.0,0.8,0.01)
+				maskThresh = st.slider("Mask Threshold",0.0,1.0,0.35,0.01)
 				mask = generate_rcnn_mask(result,confThresh,maskThresh)
 				if np.all(mask == np.zeros_like(mask)):
 					st.write("Person not detected to overlay as foregreound !")
-					slide_obj = slide_obj.empty()
 				fg = cv2.bitwise_and(result,result,mask = mask)
 				bg = cv2.resize(bg,(fg.shape[1],fg.shape[0]))
 				bg = cv2.bitwise_and(bg,bg,mask = cv2.bitwise_not(mask))
@@ -141,7 +138,7 @@ def image_transformations(result,filter,img_extension = "jpg"):
 			else:
 				result = None
 
-		if np.all(result) != None:
+		if np.all(result != None):
 			st.image(result,use_column_width = True,clamp = True,channels = "BGR")
 			filename = "Output" + "." + img_extension
 			cv2.imwrite(filename, result)
