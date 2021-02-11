@@ -61,6 +61,40 @@ def show_info():
     st.subheader (" **Select a configuration mode in the sidebar to start applying the filters :point_left:**")
     st.write("All the above input images are for education purposes only.")
 
+def like_button(st_object,key_value):
+    #-------------------------------------------------------------------------------------------------------
+    # Like button
+
+    st_object.subheader("Love the project, then lmk below :")
+    st_object.write("")
+    col1,col2 = st_object.beta_columns([1.7,1])
+    if os.path.exists("./helper/likes.txt"):
+        with open("./helper/likes.txt",'r') as file:
+            like_count = int(file.read())
+    else:
+        like_count = 0
+    liked = col1.button("Loved the project 👍",key = key_value)
+
+    if liked == True:
+        if os.path.exists("./helper/likes.txt"):
+            with open("./helper/likes.txt",'r+') as file:
+                like_count = int(file.read())
+                file.truncate(0)
+                file.seek(0)
+                like_count+=1
+                file.write(str(like_count))
+        else:
+            with open("./helper/likes.txt",'w+') as file:
+                like_count+=1
+                file.write(str(like_count))
+    else:
+        if os.path.exists("./helper/likes.txt"):
+            with open("./helper/likes.txt",'r+') as file:
+                like_count = int(file.read())
+                file.seek(0)
+    #st.markdown("""<style>.css-2trqyj{background-color: rgba(0,0,255,0.6);color: white} </style>""", unsafe_allow_html=True)
+    
+    
 st.sidebar.subheader("Choose the mode of operation: ")
 selected_option = st.sidebar.selectbox("",["Select from below","Image Filters","Video Filters"])
 
@@ -137,32 +171,5 @@ elif selected_option == "Video Filters":
 else:
     show_info()
 
-#-------------------------------------------------------------------------------------------------------
-# Like button
-
-st.sidebar.subheader("Love the project, then lmk below :")
-st.sidebar.write("")
-col1,col2 = st.sidebar.beta_columns([1.7,1])
-if os.path.exists("./helper/likes.txt"):
-    with open("./helper/likes.txt",'r') as file:
-        like_count = int(file.read())
-else:
-    like_count = 0
-liked = col1.button("Loved the project 👍")
-
-if liked == True:
-    if os.path.exists("./helper/likes.txt"):
-        with open("./helper/likes.txt",'r+') as file:
-            like_count = int(file.read())
-            file.truncate(0)
-            file.seek(0)
-            like_count+=1
-            file.write(str(like_count))
-    else:
-        with open("./helper/likes.txt",'w+') as file:
-            like_count+=1
-            file.write(str(like_count))
-#st.markdown("""<style>.css-2trqyj{background-color: rgba(0,0,255,0.6);color: white} </style>""", unsafe_allow_html=True)
-
-if like_count != 0:
-    col2.markdown(f"{int(like_count)} :heart:")
+like_button(st.sidebar,"sidebar_button")
+like_button(st,"button")
