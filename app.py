@@ -145,10 +145,12 @@ if selected_option == "Image Filters":
 
 elif selected_option == "Video Filters":
     title.header("Video Filters")
-    st.markdown("""<style>.css-3mnucz a {color: red} </style>""", unsafe_allow_html=True)
-    st.markdown("<span style='color:red'>In case video filters don't work in online mode, follow the instructions in <a href \
-        = 'https://github.com/Ashish013/Image-n-Video-Filters/blob/main/README.md#how-to-run-the-application-from-a-local-host'>Readme</a>\
-         to run them on localhost.</span>",unsafe_allow_html=True)
+    #st.markdown("""<style>.css-3mnucz a {color: red} </style>""", unsafe_allow_html=True)
+    #st.markdown("<span style='color:red'>In case video filters don't work in online mode, follow the instructions in <a href \
+    #    = 'https://github.com/Ashish013/Image-n-Video-Filters/blob/main/README.md#how-to-run-the-application-from-a-local-host'>Readme</a>\
+    #     to run them on localhost.</span>",unsafe_allow_html=True)
+    st.markdown("In case video filters don't work in online mode, follow the instructions in [Readme]\
+    (https://github.com/Ashish013/Image-n-Video-Filters/blob/main/README.md#how-to-run-the-application-from-a-local-host) to run them on localhost")
     transform_type = st.selectbox("Select a Video Filter: ", ["Live Stream","Half Slide - Horizontal","Half Slide - Vertical"\
         ,"Line Freeze - Horizontal","Line Freeze - Vertical","Time Freeze - Ssim","Time Freeze - Rcnn","Heart Eyes","Moustaches",\
         "Face Blur","Devil-ie","Thug Life"],0)
