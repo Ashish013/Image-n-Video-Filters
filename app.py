@@ -16,7 +16,7 @@ def show_info():
     st.subheader('''
     This app is developed and maintained by Ashish Marisetty :heart:
     Entire deployement and configuration of the app is managed through [Streamlit](http://streamlit.io/).
-    In case of any discrepancies, feel free to [raise an issue here](https://github.com/Ashish013/Social-Media-Filters-Deploy/issues).
+    In case of any discrepancies, feel free to [raise an issue here](https://github.com/Ashish013/Image-n-Video-Filters/issues).
 
 
     *For more interesting projects and explanation of the source code, consider following [my blogs here.](https://ashish013.github.io/opencv)*
