@@ -34,7 +34,7 @@ def show_info():
 
     st.markdown("#### **Filters used: Line Freeze - Vertical**")
     st.write("")
-    st.image("./helper/Line Freeze.gif")
+    st.image("./helper/Line Freeze.gif",use_column_width = True)
 
     st.markdown("#### **Filters used: Devil-ie, Heart Eyes**")
     st.write("")
@@ -44,7 +44,7 @@ def show_info():
 
     st.markdown("#### **Filters used: Half Slide - Vertical**")
     st.write("")
-    st.image("./helper/Line Slide.gif")
+    st.image("./helper/Line Slide.gif",use_column_width = True)
 
     st.markdown("#### **Filters used: Green Screen**")
     st.write("")
@@ -54,7 +54,7 @@ def show_info():
 
     st.markdown("#### **This video can be recreated using Time Freeze - Ssim filter **")
     st.write("")
-    st.image("./helper/Time Freeze.gif")
+    st.image("./helper/Time Freeze.gif",use_column_width = True)
 
     st.write("")
 
