@@ -9,6 +9,8 @@ title = st.empty()
 title.header("Image and Video Filters")
 img_extensions = ["jpg","png","jpeg"]
 #vid_extensions = ["mp4","avi","mkv"]
+if os.path.exists("./helper/likes.txt"):
+    os.remove("./helper/likes.txt")
 
 def show_info():
     st.subheader('''
@@ -171,5 +173,5 @@ elif selected_option == "Video Filters":
 else:
     show_info()
 
-like_button(st.sidebar,"sidebar_button")
-like_button(st,"button")
+#like_button(st.sidebar,"sidebar_button")
+#like_button(st,"button")
