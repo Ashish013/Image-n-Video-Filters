@@ -9,8 +9,8 @@ title = st.empty()
 title.header("Image and Video Filters")
 img_extensions = ["jpg","png","jpeg"]
 #vid_extensions = ["mp4","avi","mkv"]
-if os.path.exists("./helper/likes.txt"):
-    os.remove("./helper/likes.txt")
+#if os.path.exists("./helper/likes.txt"):
+#    os.remove("./helper/likes.txt")
 
 def show_info():
     st.subheader('''
@@ -95,6 +95,9 @@ def like_button(st_object,key_value):
                 like_count = int(file.read())
                 file.seek(0)
     #st.markdown("""<style>.css-2trqyj{background-color: rgba(0,0,255,0.6);color: white} </style>""", unsafe_allow_html=True)
+
+    if like_count != 0:
+        col2.markdown(f"{int(like_count)} :heart:")
     
     
 st.sidebar.subheader("Choose the mode of operation: ")
@@ -173,5 +176,5 @@ elif selected_option == "Video Filters":
 else:
     show_info()
 
-#like_button(st.sidebar,"sidebar_button")
-#like_button(st,"button")
+like_button(st.sidebar,"sidebar_button")
+like_button(st,"button")
