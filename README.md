@@ -11,5 +11,16 @@ It maybe because there are some problems on the network between your local envir
 ```
 git pull https://github.com/Ashish013/Image-n-Video-Filters
 pip install -r requirements.txt
-python app.py
+streamlit run app.py
 ```
+## App preview:
+<img src="helper/demo-run.gif"/>
+
+## Examples:
+
+| Inputs | Filter Ouputs | 
+|---|---|
+| <img src="helper/dwayne.jpg" width="481" /> | <img src="helper/dwayne_edit.jpg" width="481" /> |
+| <img src="helper/elon_kanye.jpg" width="481" /> | <img src="helper/elon_kanye_edit.jpeg" width="481" /> |
+| <img src="helper/trump.jpg" width="481" /> | <img src="helper/trump_edit.jpg" width="481" /> |
+| <img src="helper/Line%20Freeze.gif" width="481" /> | <img src="helper/Line%20Slide.gif" width="481" /> |
